@@ -1,0 +1,13 @@
+show databases;
+create database if not exists college;
+use college;
+show tables;
+create table college(
+college_id int unique not null,
+college_name varchar(50) not null,
+std_rollno int not null,
+std_name varchar(20) not null
+);
+desc college;
+insert into college values(1,'vit',22,'ajay'),(1,'srm',23,'sujay');
+select * from college;
