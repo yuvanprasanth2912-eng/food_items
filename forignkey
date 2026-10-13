@@ -1,0 +1,56 @@
+1. multirow
+CREATE DATABASE IF NOT EXISTS college;
+USE college;
+
+CREATE TABLE students (
+    studentname VARCHAR(30),
+    subject VARCHAR(20),
+    mark INT
+);
+
+INSERT INTO students VALUES
+('Arun', 'Tamil', 85),
+('Arun', 'English', 90),
+('Arun', 'Maths', 95),
+('Kumar', 'Science', 70);
+
+SELECT *
+FROM students
+WHERE subject IN (
+    SELECT subject
+    FROM students
+    WHERE subject IN ('Tamil', 'English', 'Maths')
+);
+
+2.Foreign key
+
+create database if not exists company;
+use company;
+create table manager_details(
+manager_id int primary key,
+manager_name varchar(10),
+dep_name varchar(10)
+);
+create table employee_details(
+emp_id int primary key,
+emp_name varchar(10),
+dep_name varchar(10),
+Manager_ID INT,
+    FOREIGN KEY (Manager_ID)
+        REFERENCES Manager_Details(Manager_ID)
+);
+
+INSERT INTO Manager_Details VALUES
+(101, 'Arun', 'IT'),
+(102, 'kavi', 'HR'),
+(103, 'Kumar', 'Sales');
+
+INSERT INTO Employee_Details VALUES
+(1, 'yuvan', 'IT', 101),
+(2, 'ashok', 'HR', 102),
+(3, 'Mani', 'Sales', 103),
+(4, 'Karthik', 'IT', 101);
+
+SELECT * FROM Manager_Details;
+
+SELECT * FROM Employee_Details;
