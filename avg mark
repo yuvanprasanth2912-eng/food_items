@@ -1,0 +1,20 @@
+create database if not exists school;
+use school;
+drop function if exists getgrade;
+CREATE FUNCTION GetGrade(mark INT)
+RETURNS VARCHAR(20)
+DETERMINISTIC
+BEGIN
+    IF mark >= 50 AND mark < 60 THEN
+        RETURN 'Average';
+    ELSEIF mark >= 60 AND mark < 70 THEN
+        RETURN 'Good';
+    ELSEIF mark >= 70 AND mark < 80 THEN
+        RETURN 'Excellent';
+    ELSEIF mark >= 80 THEN
+        RETURN 'Outstanding';
+    ELSE
+        RETURN 'Fail';
+    END IF;
+DELIMITER ;
+select getgrade(55);
